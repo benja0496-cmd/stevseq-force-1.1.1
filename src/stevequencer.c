@@ -252,6 +252,21 @@ static void random_step(sq_t *q, int i) {   /* new notes and gates, in the scale
     s->pitch = quant_range(q, 48 + q->root + (int)(rnd(q) % 25));
     s->velo = 80 + (int)(rnd(q) % 48);
 }
+/* One value of a step, new at random (the sub-page's RANDOM button: p<page>_rand_<attr>). Ranges: PITCH in the scale as RANDOM does;
+ * LENGTH 25-150%; ON/OFF 75% on; VELO 80-127; CHANCE 20-100%; RATCHET mostly x1; MOD A/B 0-127. */
+static int random_attr(sq_t *q, int i, const char *attr) {
+    step_t *s = &q->s[i];
+    if (!strcmp(attr, "pitch")) s->pitch = quant_range(q, 48 + q->root + (int)(rnd(q) % 25));
+    else if (!strcmp(attr, "length")) s->length = 25 + 5 * (int)(rnd(q) % 26);
+    else if (!strcmp(attr, "on")) s->on = rnd(q) % 100 < 75;
+    else if (!strcmp(attr, "velo")) s->velo = 80 + (int)(rnd(q) % 48);
+    else if (!strcmp(attr, "chance")) s->chance = 20 + 5 * (int)(rnd(q) % 17);
+    else if (!strcmp(attr, "ratchet")) { int r = (int)(rnd(q) % 100); s->ratchet = r < 60 ? 1 : r < 80 ? 2 : r < 90 ? 3 : 4; }
+    else if (!strcmp(attr, "moda")) s->mod[0] = (int)(rnd(q) % 128);
+    else if (!strcmp(attr, "modb")) s->mod[1] = (int)(rnd(q) % 128);
+    else return 0;
+    return 1;
+}
 static void loop_steps(const sq_t *q, int *idx) {
     for (int k = 0; k < q->loop_len; k++) idx[k] = (q->loop_start - 1 + k) % NSTEPS;
 }
@@ -264,6 +279,7 @@ static int trigger(sq_t *q, const char *key) {
         else if (!strcmp(what, "paste")) { if (q->have_clip) memcpy(pg, q->clip, sizeof q->clip); }
         else if (!strcmp(what, "clear")) { for (int i = 0; i < PAGE; i++) pg[i] = STEP_CLEAR; }
         else if (!strcmp(what, "random")) { for (int i = 0; i < PAGE; i++) random_step(q, (p - 1) * PAGE + i); }
+        else if (!strncmp(what, "rand_", 5)) { for (int i = 0; i < PAGE; i++) if (!random_attr(q, (p - 1) * PAGE + i, what + 5)) return 0; }
         else return 0;
         return 1;
     }

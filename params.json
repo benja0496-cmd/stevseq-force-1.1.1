@@ -48454,6 +48454,262 @@
     "REC+PLAY"
    ],
    "default": 0
+  },
+  {
+   "key": "p1_rand_pitch",
+   "refresh_display": true,
+   "name": "P1 RAND PITCH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_length",
+   "refresh_display": true,
+   "name": "P1 RAND LENGTH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_on",
+   "refresh_display": true,
+   "name": "P1 RAND ON",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_velo",
+   "refresh_display": true,
+   "name": "P1 RAND VELO",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_chance",
+   "refresh_display": true,
+   "name": "P1 RAND CHANCE",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_ratchet",
+   "refresh_display": true,
+   "name": "P1 RAND RATCHET",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_moda",
+   "refresh_display": true,
+   "name": "P1 RAND MOD A",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p1_rand_modb",
+   "refresh_display": true,
+   "name": "P1 RAND MOD B",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_pitch",
+   "refresh_display": true,
+   "name": "P2 RAND PITCH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_length",
+   "refresh_display": true,
+   "name": "P2 RAND LENGTH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_on",
+   "refresh_display": true,
+   "name": "P2 RAND ON",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_velo",
+   "refresh_display": true,
+   "name": "P2 RAND VELO",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_chance",
+   "refresh_display": true,
+   "name": "P2 RAND CHANCE",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_ratchet",
+   "refresh_display": true,
+   "name": "P2 RAND RATCHET",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_moda",
+   "refresh_display": true,
+   "name": "P2 RAND MOD A",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p2_rand_modb",
+   "refresh_display": true,
+   "name": "P2 RAND MOD B",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_pitch",
+   "refresh_display": true,
+   "name": "P3 RAND PITCH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_length",
+   "refresh_display": true,
+   "name": "P3 RAND LENGTH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_on",
+   "refresh_display": true,
+   "name": "P3 RAND ON",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_velo",
+   "refresh_display": true,
+   "name": "P3 RAND VELO",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_chance",
+   "refresh_display": true,
+   "name": "P3 RAND CHANCE",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_ratchet",
+   "refresh_display": true,
+   "name": "P3 RAND RATCHET",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_moda",
+   "refresh_display": true,
+   "name": "P3 RAND MOD A",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p3_rand_modb",
+   "refresh_display": true,
+   "name": "P3 RAND MOD B",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_pitch",
+   "refresh_display": true,
+   "name": "P4 RAND PITCH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_length",
+   "refresh_display": true,
+   "name": "P4 RAND LENGTH",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_on",
+   "refresh_display": true,
+   "name": "P4 RAND ON",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_velo",
+   "refresh_display": true,
+   "name": "P4 RAND VELO",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_chance",
+   "refresh_display": true,
+   "name": "P4 RAND CHANCE",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_ratchet",
+   "refresh_display": true,
+   "name": "P4 RAND RATCHET",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_moda",
+   "refresh_display": true,
+   "name": "P4 RAND MOD A",
+   "momentary": true,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "key": "p4_rand_modb",
+   "refresh_display": true,
+   "name": "P4 RAND MOD B",
+   "momentary": true,
+   "min": 0,
+   "max": 1
   }
  ]
 }

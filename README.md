@@ -14,7 +14,7 @@ MIDI port to whatever track you point at it.
 
 - In the plugin browser: **[SEQ] Stevequencer** by **Steve A** (Sequencer)
 - Files: the release installs one folder, `/sdcard/Synths/Steve A - VST - [SEQ] Stevequencer/`, holding `stevequencer.so`, its screen. The vst_instruments installer puts `stevequencer.so` in `/sdcard/vst/` instead.
-- 553 parameters (all automatable) on 6 pages; each step page has 8 Q-Link sub-pages
+- 585 parameters (all automatable) on 6 pages; each step page has 8 Q-Link sub-pages
 - 20 patterns in MPC's PRESET menu: Init, Bass Line, Acid Line, Arp Climb, Offbeat Stabs, Drunk Walk, and 14 seeded
   random ones (2026-10-04): Minor Pulse, Pentatonic Rain, Dorian Groove, Phrygian Run, Lydian Float, Blues Shuffle,
   Whole Tone Drift, Ratchet Stabs, Pendulum Arp, Garden Chance, Harmonic Steps, Low Slow Bass, Five of Eight,
@@ -43,8 +43,10 @@ C3). On the MPC each page is a tab under the plugin header.
 Each step is a cell: **tap its header** to switch it on or off; **drag its big value** up or down to change it; the
 footer shows its pitch, length, velocity, chance and ratchets. The playing step is outlined (STEP LIGHT), and **NOW
 PLAYING** on the right shows it from any page. The right strip also has the loop and rate, and the page tools: **COPY**
-and **PASTE** a page (one clipboard), **CLEAR** (all its steps off) and **RANDOM** (new pitches in the scale, new gates
-and velocities).
+and **PASTE** a page (one clipboard), **CLEAR** (all its steps off) and **RANDOM**, which randomises the value of the
+sub-page you are on: PITCH (new pitches in the scale), LENGTH (25-150%), ON/OFF (75% on), VELO (80-127), CHANCE (20-100%),
+RATCHET (mostly x1) or MOD A / MOD B (0-127), for that page's 16 steps only and nothing else. (The SETUP page's RANDOM
+still randomises the whole loop: on/off, pitch and velocity.)
 
 **Q-Link sub-pages.** Each step page has eight, in this order: **PITCH, LENGTH, ON/OFF, VELO, CHANCE, RATCHET, MOD A,
 MOD B** (MPC's tab shows which: `1-16 PITCH`, `1-16 LENGTH` …). They change what the Q-Links edit, and with it the cells' big value
@@ -153,7 +155,7 @@ Use one or the other for this plugin: both register the same plugin (same uid), 
 - The step light: MPC's screen thread while playing (`dev-tools/screengrab/cpuwatch.sh`; STEP LIGHT off if it's heavy),
   and that recording with automation doesn't record PLAY STEP.
 - Six Q-Link sub-pages per tab: how MPC names and switches them (25 pages in all; the skin is twice Helm's size).
-- That 552 parameters load and save with a project, and that a project reopens with its pattern (and its MOD values).
+- That 585 parameters load and save with a project, and that a project reopens with its pattern (and its MOD values).
 - ~~MOD lanes: that MPC passes the CCs from a track's MIDI input on to the instrument~~: working on the Live II
   (2026-10-05). 33 Q-Link sub-pages in all now.
 
@@ -176,3 +178,11 @@ each other, see **[Stevequencer 16](https://github.com/saustin2010/vst_instrumen
 | `images/` | artwork: backgrounds, step headers, value arc, step light, buttons (generated) |
 | `src/`, `mpc/` | the engine, the adapter, the generators |
 | `design/prototype.html` | the browser prototype |
+
+## Force: 8 Q-Links in a row
+
+`Q-Links - 8by1.json` (the map a Force with its 8 Q-Link knobs in one row uses) is made from `Q-Links.json` by
+`tools/qlinks_8by1.py "<Plugin Skins dir>"` (run it after the skin is generated). The Force's knobs read the 16 slots by grid
+column, each from the bottom row up, so the 4x4 map shows steps 1 5 9 13 2 6 10 14 | 3 7 11 15 4 8 12 16 there. The script
+reorders the slots so bank 1 edits cells 1-8 and bank 2 cells 9-16, left to right; SETUP and MOD list their parameters in
+order, 8 per bank. `Q-Links.json` (MPC Live / X) is unchanged.

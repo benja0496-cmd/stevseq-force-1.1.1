@@ -95,6 +95,10 @@ def params():
             for k in [k for k in d if k not in ("key", "refresh_display")]:
                 d[k] = d.pop(k)   # right after "key", as dev-tools/displaydeps/apply.py writes it
     out += [dict(key=k, name=n, **d) for k, n, d, _ in APPENDED]
+    # the sub-page's own RANDOM button (v1.1.2: RANDOM edits the value of the sub-page you are on), appended after COUNT-IN: MPC
+    # saves projects and Q-Link assignments by parameter index (params.lock holds the order). They move steps, so refresh_display
+    out += [{"key": "p%d_rand_%s" % (p, a), "refresh_display": True, "name": "P%d RAND %s" % (p, an), "momentary": True,
+             "min": 0, "max": 1} for p in range(1, 5) for a, _, an, _, _ in ATTRS]
     return out
 
 
@@ -422,8 +426,13 @@ def layout():
             o.append(L("readout", cx=sx + sw - 56, cy=sy + yy, w=84, h=28, vs=24, ink="ink", box="no", key=key))
         o.append(L("readout", cx=sx + sw // 2, cy=sy + 350, w=sw - 32, h=64, vs=60, ink="accent", box="no", key="play_step"))
         for k, (tool, lab) in enumerate(PAGE_TOOLS):
-            o.append(L("button", cx=sx + 16 + 52 + (k % 2) * 104, cy=sy + 484 + 28 + (k // 2) * 64, w=96, h=56,
-                       label=lab, key="p%d_%s" % (t + 1, tool), img="images/btn.png", img_on="images/btn_on.png"))
+            pos = dict(cx=sx + 16 + 52 + (k % 2) * 104, cy=sy + 484 + 28 + (k // 2) * 64, w=96, h=56, label=lab)
+            if tool == "random":   # one button per sub-page, each with its own parameter: PITCH randomises the pitches ...
+                for a, a_tab, _, _, _ in ATTRS:
+                    o.append(L("button", key="p%d_rand_%s" % (t + 1, a), banks=bank(t, a_tab), **pos, img="images/btn.png",
+                               img_on="images/btn_on.png"))
+            else:
+                o.append(L("button", **pos, key="p%d_%s" % (t + 1, tool), img="images/btn.png", img_on="images/btn_on.png"))
         for a, a_tab, _, _, _ in ATTRS:   # Q-Link slots 4c..4c+3 = column c, top knob first
             keys = ["s%d_%s" % (t * PAGE + cell_step(r, c) + 1, a) for c in range(4) for r in range(4)]
             o.append('qlinks "%s" = %s' % (bank(t, a_tab), ",".join(keys)))
